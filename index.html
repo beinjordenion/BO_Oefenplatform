@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="nl-BE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#229655">
+  <title>Provil ION - Oefenplatform B&O</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" id="brandHome" href="#start" aria-label="Startpagina"><span class="brand-mark">B&O</span><span><strong>Oefenplatform</strong><small>Bedrijf &amp; Organisatie</small></span></a>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" hidden>☰</button>
+  <nav id="mainNav" hidden>
+    <a href="#start" data-page="start" class="nav-link active">Start</a>
+    <a href="#oefeningen" data-page="oefeningen" class="nav-link">Oefeningen</a>
+    <a href="#beheer" data-page="beheer" class="nav-link">🔒 Leerkrachtbeheer</a>
+  </nav>
+  <button class="btn btn-outline logout-btn" id="logoutBtn" type="button" hidden>Uitloggen</button>
+</header>
+<main class="wrap">
+  <section class="page active role-page" id="rolePage">
+    <div class="page-heading"><p class="eyebrow">WELKOM</p><h1>Hoe wil je verdergaan?</h1><p>Kies eerst je rol om het oefenplatform te openen.</p></div>
+    <div class="role-options">
+      <article class="panel role-option"><div class="module-icon" aria-hidden="true">📘</div><h2>Leerling</h2><p>Importeer eerst een oefeningenset om te starten met oefenen.</p><button class="btn btn-primary" id="chooseStudent" type="button">Verder als leerling</button></article>
+      <article class="panel role-option"><div class="module-icon" aria-hidden="true">🔐</div><h2>Leerkracht</h2><p>Meld je aan met je leerkrachtcode om de oefenbank te beheren.</p><button class="btn btn-primary" id="chooseTeacher" type="button">Verder als leerkracht</button></article>
+    </div>
+    <div class="login-panel role-step" id="studentImportPanel" hidden>
+      <h2>Oefeningenset importeren</h2>
+      <p>Importeer een geldige oefeningenset voordat je verdergaat.</p>
+      <label class="btn btn-primary role-import-btn">Kies oefeningenset<input type="file" id="learnerImportFile" accept=".json,application/json" hidden></label>
+      <button class="btn btn-outline role-back-btn" id="backToRolesFromStudent" type="button">← Terug naar rolkeuze</button>
+      <p id="learnerImportFeedback" class="feedback" aria-live="polite"></p>
+    </div>
+    <div class="login-panel role-step" id="teacherLoginPanel" hidden>
+      <div class="login-symbol">🔐</div><h2>Toegang voor leerkrachten</h2>
+      <p>Geef je leerkrachtcode in om de oefenbank te beheren.</p>
+      <form id="loginForm"><label>Leerkrachtcode<input id="teacherPin" type="password" inputmode="numeric" placeholder="Leerkrachtcode" required></label><button class="btn btn-primary" type="submit">Inloggen</button><p id="loginFeedback" class="feedback" aria-live="polite"></p></form>
+      <small class="muted">Lokale demonstratiecode: <b>2468</b>. Voor online gebruik is serverbeveiliging nodig.</small>
+      <button class="btn btn-outline role-back-btn" id="backToRolesFromTeacher" type="button">← Terug naar rolkeuze</button>
+    </div>
+  </section>
+
+  <section class="page" id="startPage">
+    <div class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">OEFENEN • CONTROLEREN • BIJLEREN</p>
+        <h1>Welkom op het<br><span>oefenplatform boekhouden</span></h1>
+        <p>Train je boekhoudkundige vaardigheden, inzicht en snelheid. Kies een onderdeel en ga aan de slag.</p>
+        <a class="btn btn-light" href="#oefeningen" data-goto="oefeningen">Bekijk de oefeningen <b>→</b></a>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="visual-sheet"><div class="sheet-top">FACTUUR <span>✓</span></div><div class="sheet-line"></div><div class="sheet-line short"></div><div class="sheet-total">€ 1.210,00</div></div>
+        <div class="visual-chip chip-a">BTW 21%</div><div class="visual-chip chip-b">✓ Correct</div>
+        <div class="visual-orbit">€</div>
+      </div>
+    </div>
+    <section id="leerdoelen" aria-labelledby="learningGoalsHeading">
+      <div class="section-head"><div><p class="eyebrow">LEERDOELEN</p><h2 id="learningGoalsHeading">Welke leerdoelen oefen ik?</h2></div><a href="#oefeningen" data-goto="oefeningen" class="btn btn-outline plain-link">Bekijk alle oefeningen →</a></div>
+      <div class="module-grid learning-goal-grid">
+        <article class="module-card learning-goal-card"><div class="module-icon" aria-hidden="true">🧾</div><h3>Facturen berekenen</h3><p>Pas btw-tarieven toe en bereken handelskortingen, kosten, financiële kortingen, terugstuurbare verpakking en factuurtotalen.</p></article>
+        <article class="module-card learning-goal-card"><div class="module-icon" aria-hidden="true">📚</div><h3>Boekingen en documenten begrijpen</h3><p>Herken handelsdocumenten, verwerk creditnota's en oefen met rekeningen en boekingen in het dubbel boekhouden.</p></article>
+        <article class="module-card learning-goal-card"><div class="module-icon" aria-hidden="true">💶</div><h3>Nauwkeurig rekenen en controleren</h3><p>Werk met opgegeven gegevens bij loonberekeningen, voer bedragen zorgvuldig in en controleer je tussenstappen.</p></article>
+      </div>
+    </section>
+    <div class="notice"><b>Tip:</b> Lees de opdracht aandachtig, noteer je tussenstappen en controleer je antwoord. Je kunt bij de oefeningen de oplossing opvragen.</div>
+  </section>
+
+  <section class="page" id="oefeningenPage">
+    <div class="page-heading"><p class="eyebrow">OEFENRUIMTE</p><h1>Alle oefeningen</h1><p>Kies een onderdeel. Je krijgt feedback en kunt de oplossing stap voor stap bekijken.</p></div>
+    <div class="module-grid" id="allModules"></div>
+  </section>
+
+  <section class="page" id="exercisePage">
+    <div id="exerciseBackRow"><button class="btn btn-outline" id="backToExercises">← Terug naar oefeningen</button></div>
+    <div id="exerciseContent"></div>
+  </section>
+
+  <section class="page" id="beheerPage">
+    <div class="page-heading"><p class="eyebrow">BEHEER EN AANPASSING</p><h1>Leerkrachtbeheer</h1><p>Beheer de oefenbank en stem opdrachten af op je eigen cursus.</p></div>
+    <div id="adminPanel">
+        <div class="admin-heading"><div><p class="eyebrow">BEHEERDERSTOEGANG</p><h2>Oefenbank beheren</h2><p>Voeg opdrachten toe, wijzig ze of verwijder ze. Exporteer regelmatig een back-up.</p></div></div>
+        <div class="admin-toolbar panel">
+          <label for="adminModuleFilter">Kies onderdeel
+            <select id="adminModuleFilter" required></select>
+          </label>
+          <div class="admin-toolbar-actions">
+            <button class="btn btn-outline" id="exportBtn" type="button" disabled>Exporteer oefeningenset</button>
+            <button class="btn btn-outline" id="importBtn" type="button" disabled>Importeer oefeningenset</button>
+            <input type="file" id="importFile" accept=".json,application/json" hidden>
+          </div>
+        </div>
+        <p class="muted small admin-import-help">Importeren en exporteren werkt voor het gekozen onderdeel. Oefeningen van andere onderdelen blijven behouden; een botsend oefening-ID krijgt een nieuwe unieke ID. Numeriek klavier is een vaste snelheidstest en heeft geen beheerbare oefenbank.</p>
+        <section class="panel module-visibility-panel">
+          <h2>Modules voor leerlingen</h2>
+          <p class="muted">Schakel onderdelen tijdelijk in of uit. Onderdelen zonder oefeningen zijn automatisch niet beschikbaar.</p>
+          <div id="moduleVisibilityList" class="module-visibility-list"></div>
+          <p id="moduleVisibilityStatus" class="feedback" aria-live="polite"></p>
+        </section>
+        <section class="panel keypad-admin-notice" id="keypadAdminNotice" hidden>
+          <h2>Numeriek klavier</h2>
+          <p>Dit onderdeel gebruikt een vaste snelheidstest met willekeurige getallen. Je kunt de module voor leerlingen in- of uitschakelen bij <strong>Modules voor leerlingen</strong>; oefeningen hoef je hier niet aan te maken.</p>
+        </section>
+        <div class="admin-layout" id="adminModuleWorkspace" hidden>
+          <section class="panel">
+            <div id="genericQuestionPanel">
+              <h2 id="formHeading">Nieuwe oefening</h2>
+              <form id="questionForm">
+                <input type="hidden" id="qId">
+                <input type="hidden" id="qModule">
+                <label>Titel<input id="qTitle" required placeholder="Bijv. Btw berekenen"></label>
+                <label>Opgave<textarea id="qPrompt" rows="4" required placeholder="Schrijf de opdracht voor de leerling"></textarea></label>
+                <div class="two-col">
+                  <label>Soort antwoord<select id="qType"><option value="number">Getal / bedrag</option><option value="text">Tekst</option></select></label>
+                  <label>Moeilijkheid<select id="qLevel"><option>Basis</option><option>Standaard</option><option>Uitdagend</option></select></label>
+                </div>
+                <label>Eenheid of invoerhint<input id="qHint" placeholder="Bijv. bedrag in euro, rekeningnummer ..."></label>
+                <label>Correct antwoord<input id="qAnswer" required placeholder="Bijv. 210,00"></label>
+                <label>Toegestane afwijking (getallen)<input id="qTolerance" type="number" min="0" step="0.01" value="0.01"></label>
+                <label>Oplossing / tussenstappen<textarea id="qSolution" rows="5" placeholder="Toon de berekening of redenering stap voor stap"></textarea></label>
+                <label>Leerplandoelcode (optioneel)<input id="qGoal" placeholder="Alleen invullen na controle van de doelenfiche"></label>
+                <div class="form-actions"><button class="btn btn-primary" type="submit">Oefening bewaren</button><button class="btn btn-outline" type="button" id="clearForm">Leegmaken</button></div>
+              </form>
+            </div>
+            <div id="invoiceBuilderPanel" hidden>
+              <h2 id="invoiceBuilderHeading">Factuuroefening samenstellen</h2>
+              <p class="muted small">Vul per btw-tarief de brongegevens in. Het niveau en alle antwoorden worden automatisch berekend.</p>
+              <form id="invoiceBuilderForm">
+                <input type="hidden" id="invoiceSetId">
+                <label>Titel (automatisch volgnummer, aanpasbaar)<input id="invoiceSetTitle" maxlength="100" placeholder="Bijv. F0001-JJJJ"></label>
+                <div class="invoice-builder-table-wrap">
+                  <table class="invoice-builder-table">
+                    <thead><tr><th>BTW-%</th><th>Goederen excl. btw (€)</th><th>Handelskorting (%)</th><th>Extra kosten (€)</th><th>Financiële korting (%)</th><th>Borg verpakking (€)</th><th></th></tr></thead>
+                    <tbody id="invoiceParameterRows"></tbody>
+                  </table>
+                </div>
+                <div class="form-actions">
+                  <button class="btn btn-outline" type="button" id="addInvoiceParameterRow">Btw-tarief toevoegen</button>
+                  <button class="btn btn-outline" type="button" id="clearInvoiceBuilder">Leegmaken</button>
+                </div>
+                <div id="invoiceBuilderPreview" class="invoice-builder-preview" aria-live="polite"></div>
+                <div class="form-actions"><button class="btn btn-primary" type="submit" id="saveInvoiceSet">Oefening toevoegen</button></div>
+              </form>
+            </div>
+            <div id="creditBuilderPanel" hidden>
+              <h2 id="creditBuilderHeading">Creditnota-oefening samenstellen</h2>
+              <p class="muted small">Vul per btw-tarief de te crediteren brongegevens in. Het niveau en alle antwoorden worden automatisch berekend.</p>
+              <form id="creditBuilderForm">
+                <input type="hidden" id="creditSetId">
+                <label>Titel (automatisch volgnummer, aanpasbaar)<input id="creditSetTitle" maxlength="100" placeholder="Bijv. CN0001-JJJJ"></label>
+                <div class="invoice-builder-table-wrap">
+                  <table class="invoice-builder-table">
+                    <thead><tr><th>BTW-%</th><th>Goederen excl. btw (€)</th><th>Handelskorting (%)</th><th>Extra kosten (€)</th><th>Financiële korting (%)</th><th>Borg verpakking (€)</th><th></th></tr></thead>
+                    <tbody id="creditParameterRows"></tbody>
+                  </table>
+                </div>
+                <div class="form-actions">
+                  <button class="btn btn-outline" type="button" id="addCreditParameterRow">Btw-tarief toevoegen</button>
+                  <button class="btn btn-outline" type="button" id="clearCreditBuilder">Leegmaken</button>
+                </div>
+                <div id="creditBuilderPreview" class="invoice-builder-preview" aria-live="polite"></div>
+                <div class="form-actions"><button class="btn btn-primary" type="submit" id="saveCreditSet">Oefening toevoegen</button></div>
+              </form>
+            </div>
+          </section>
+          <section class="panel">
+            <div class="list-head"><div><h2 id="adminListHeading">Bestaande oefeningen</h2><p class="muted" id="questionCount"></p></div><div class="admin-list-filters"><label for="adminSearch">Zoek oefening<input id="adminSearch" class="search" placeholder="Zoek op titel of opgave"></label></div></div>
+            <div id="adminQuestionList" class="admin-list"></div>
+          </section>
+        </div>
+    </div>
+  </section>
+</main>
+<footer><div class="footer-brand"><img src="provil-ion-logo.png" alt="Provil ION"><div class="footer-copy"><span>Leeromgeving voor Bedrijf &amp; Organisatie</span><small>Deze tool is eigendom van Jorden Bein.</small></div></div></footer>
+<dialog class="logout-dialog" id="logoutDialog" aria-labelledby="logoutDialogTitle">
+  <h2 id="logoutDialogTitle">Uitloggen?</h2>
+  <p id="logoutDialogMessage">Je staat op het punt om uit te loggen. Bevestig om door te gaan.</p>
+  <label class="dialog-input-field" id="dialogInputField" for="dialogInput">
+    Kies een naam voor deze oefeningenset
+    <input id="dialogInput" type="text" autocomplete="off">
+  </label>
+  <div class="logout-dialog-actions">
+    <button class="btn btn-navy" id="cancelLogout" type="button">Annuleer</button>
+    <button class="btn btn-danger" id="confirmLogout" type="button">Uitloggen</button>
+  </div>
+</dialog>
+<script src="app.js"></script>
+</body></html>
